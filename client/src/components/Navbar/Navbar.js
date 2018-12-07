@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 class Landing extends Component {
     logOut(e) {
-        e.preventdefault()
+        console.log("get me out of here!")
         localStorage.removeItem('usertoken')
         this.props.history.push('/')
     }
