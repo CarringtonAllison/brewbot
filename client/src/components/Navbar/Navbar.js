@@ -32,6 +32,10 @@ class Landing extends Component {
                         User
                     </Link>
                 </li>
+
+                <li className="naveitem">
+                    <Link to="/searchPage" className="nav-link">Search Page</Link>
+                </li>
                 <li className="navitem">
                     <a href="" onClick={this.logOut.bind(this)} className="nav-link">Logout</a>
                 </li>
