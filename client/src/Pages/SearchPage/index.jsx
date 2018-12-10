@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from "../../components/Grid";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Card from "../../components/Card";
+import CardBeer from "../../components/CardBeer";
+import CardBrewery from "../../components/CardBrewery";
 import DropDown from "../../components/DropDown";
+import API from "../../utils/API"
 
 import axios from 'axios'
 
@@ -15,12 +17,12 @@ class SearchPage extends Component {
         search: "",
         searchResaults: {},
         favorits: [],
-        image: defaultImage
+        image: defaultImage,
+        searchOption: "beers"
     }
 
     handleInputChange = e => {
         const { name, value } = e.target;
-        console.log(value);
         this.setState({
             [name]: value
         });
@@ -34,25 +36,51 @@ class SearchPage extends Component {
             abv: this.state.searchResaults.abv
         }
         this.state.favorits.push(obj);
-        
+
         console.log(this.state.favorits);
     }
 
     handleFormSubmit = e => {
         e.preventDefault();
-        let URL = "https://cors-escape.herokuapp.com/https://api.brewerydb.com/v2/beers//?key=091aef518454c817284027220f913f6c&name=" + this.state.search;
 
-        axios.get(URL).then(res => {
-            this.setState({
-                searchResaults: res.data.data[0],
-                image: (res.data.data[0].labels ? res.data.data[0].labels.contentAwareLarge : defaultImage)
-            })
-
-            console.log(this.state.searchResaults);
-
-        }).catch(err => console.log(err));
+        API.getbeer(this.state.searchOption, this.state.search)
+            .then(res => {
+                this.setState({
+                    searchResaults: res.data.data[0],
+                    image: this.handleImages(res)
+                })
+            }).catch(err => console.log(err));
 
         console.log("Submited");
+    }
+
+    handleImages(res) {
+        if (this.state.searchOption === "beers") {
+            return res.data.data[0].labels ? res.data.data[0].labels.contentAwareLarge : defaultImage;
+        }
+        else if (this.state.searchOption === "breweries") {
+            return res.data.data[0].images ? res.data.data[0].images.large : defaultImage;
+        }
+    }
+
+    renderCard() {
+        if (this.state.searchOption === 'beers') {
+            return <CardBeer
+                URL={this.state.image}
+                title={this.state.searchResaults.name}
+                description={this.state.searchResaults.description}
+                ABV={this.state.searchResaults.abv}
+                onClick={this.handleSave}
+            />
+        }
+        else if (this.state.searchOption === 'breweries') {
+            return <CardBrewery
+                URL={this.state.image}
+                title={this.state.searchResaults.name}
+                description={this.state.searchResaults.description}
+                link={this.state.searchResaults.website}
+            />
+        }
     }
 
     render() {
@@ -72,7 +100,7 @@ class SearchPage extends Component {
                                         />
                                     </Col>
                                     <Col size="xs-10 sm-2">
-                                        <DropDown></DropDown>
+                                        <DropDown onChange={this.handleInputChange}></DropDown>
                                     </Col>
                                     <Col size="xs-10 sm-2">
                                         <Button
@@ -89,13 +117,7 @@ class SearchPage extends Component {
                 <Row>
                     <Col size="sm-3"></Col>
                     <Col size="sm">
-                        <Card
-                            URL={this.state.image}
-                            title={this.state.searchResaults.name}
-                            description={this.state.searchResaults.description}
-                            ABV={this.state.searchResaults.abv}
-                            onClick={this.handleSave}
-                        />
+                        {this.renderCard()}
                     </Col>
                     <Col size="sm-3"></Col>
                 </Row>
