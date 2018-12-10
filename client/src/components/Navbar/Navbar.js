@@ -30,7 +30,7 @@ class Landing extends Component {
                 <li className="navitem">
                     <Link to="/profile" className="nav-link">
                         User
-        </Link>
+                    </Link>
                 </li>
                 <li className="navitem">
                     <a href="" onClick={this.logOut.bind(this)} className="nav-link">Logout</a>
@@ -57,7 +57,7 @@ class Landing extends Component {
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 Home
-            </Link>
+                            </Link>
                         </li>
                     </ul>
                     {localStorage.usertoken ? userLink : loginRegLink}
