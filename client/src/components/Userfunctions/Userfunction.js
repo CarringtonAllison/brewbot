@@ -9,7 +9,7 @@ export const register = newUser => {
         password: newUser.password
     })
     .then(response => {
-        // console('Registered')
+        console.log('Registered')
     })
 }
 
@@ -25,6 +25,7 @@ export const login = user => {
         return response.data
     })
     .catch(err => {
+        console.log('incorrect password')
         console.log(err)
     })
 }

@@ -30,7 +30,7 @@ class Landing extends Component {
                 <li className="navitem">
                     <Link to="/profile" className="nav-link">
                         User
-        </Link>
+                    </Link>
                 </li>
 
                 <li className="naveitem">
@@ -61,7 +61,7 @@ class Landing extends Component {
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 Home
-            </Link>
+                            </Link>
                         </li>
                     </ul>
                     {localStorage.usertoken ? userLink : loginRegLink}
