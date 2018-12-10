@@ -7,8 +7,6 @@ import CardBrewery from "../../components/CardBrewery";
 import DropDown from "../../components/DropDown";
 import API from "../../utils/API"
 
-import axios from 'axios'
-
 let defaultImage = 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/11/20/0/fnd_beer-istock.jpg.rend.hgtvcom.616.462.suffix/1448031613421.jpeg'
 
 
