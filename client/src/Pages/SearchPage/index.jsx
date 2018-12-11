@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import CardBeer from "../../components/CardBeer";
 import CardBrewery from "../../components/CardBrewery";
 import DropDown from "../../components/DropDown";
+import jwt_decode from 'jwt-decode';
 import API from "../../utils/API"
 
 let defaultImage = 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/11/20/0/fnd_beer-istock.jpg.rend.hgtvcom.616.462.suffix/1448031613421.jpeg'
@@ -16,7 +17,21 @@ class SearchPage extends Component {
         searchResaults: {},
         favorits: [],
         image: defaultImage,
-        searchOption: "beers"
+        searchOption: "beers",
+        first_name: '',
+        last_name: '',
+        email: '',
+        errors: {}
+    }
+
+    componentDidMount() {
+        const token = localStorage.getItem("usertoken");
+        const decoded = jwt_decode(token)
+        this.setState({
+            first_name: decoded.first_name,
+            last_name: decoded.last_name,
+            email: decoded.email
+        })
     }
 
     handleInputChange = e => {
