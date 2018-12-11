@@ -6,7 +6,7 @@ api.get("/getBeers/:searchType/:searchTerm", (req, res) => {
     var searchTerm = req.params.searchTerm;
     console.log("im here")
 
-    var URL = "https://api.brewerydb.com/v2/" + searchType + "/?key=091aef518454c817284027220f913f6c&name=" + searchTerm;
+    var URL = "https://api.brewerydb.com/v2/" + searchType + "/?key=" + process.env.API_KEY + "&name=" + searchTerm;
 
     axios.get(URL)
         .then(response => res.send(response.data))
