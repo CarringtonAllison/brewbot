@@ -65,8 +65,9 @@ users.post('/login', (req, res) => {
                     })
                     res.send(token)
                 } else {
+                    console.log('incorrect password')
                     // passwords dont match
-                    res.json({ error: 'User does not exist' })
+                    res.json({ error: 'incorrect password' })
                 }
             } else {
                 res.json({ error: 'User does not exist' })
