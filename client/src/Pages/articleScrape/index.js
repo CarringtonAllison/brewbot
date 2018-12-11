@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-const axios = require("axios");
+import API from "../../utils/API"
 
 class Scrape extends Component {
     state = {
         results: "",
-
     }
 
     scrapeArticles() {
 
-        axios.get("/api/articles").then(response => {
+        API.getArticles().then(response => {
             this.setState({ results: response })
         })
     }
