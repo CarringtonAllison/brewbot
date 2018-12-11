@@ -2,11 +2,13 @@ require("dotenv").config();
 var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
+var morgan = require("morgan");
 var app = express();
 const mongoose = require('mongoose');
 
 var port = process.env.PORT || 3001
 
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(
