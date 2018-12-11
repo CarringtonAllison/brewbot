@@ -17,7 +17,7 @@ app.use(
     })
 );
 
-const mongoURI = 'mongodb://localhost:27017/brewbotdb'
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/brewbotdb';
 
 mongoose
 .connect(

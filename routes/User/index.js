@@ -97,7 +97,25 @@ users.get('/profile', (req, res) => {
         .catch(err => {
             res.send('error:' + err)
         })
-})
+});
 
+users.get('/searchPage', (req, res) => {
+
+    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    User.findOne({
+        _id: decoded._id
+    })
+        .then(user => {
+            if (user) {
+                res.json(user)
+            } else {
+                res.send('user does not exist')
+            }
+        })
+        .catch(err => {
+            res.send('error:' + err)
+        })
+})
 
 module.exports = users;
