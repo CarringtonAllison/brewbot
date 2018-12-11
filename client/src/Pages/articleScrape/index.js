@@ -24,7 +24,6 @@ class Scrape extends Component {
                 <ul>
                     {
                         this.state.results.data ? <div>{this.state.results.data.map((result) => <li>{result.title}{result.link}<img src={result.image}></img></li>)}</div> : <div>didnt work</div>
-
                     }
 
                 </ul>
