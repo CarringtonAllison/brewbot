@@ -10,10 +10,9 @@ function JumboTron(props) {
             alt="" />
             <hr/>
             <div className="card-body">
-                <h5 className="card-title">{props.title}</h5>
+                <h5 className="card-title">{props.name}</h5>
                 <p className="card-text">{props.description}</p>
-                <a className="card-text" href={props.link} target="_blank">Website</a>
-                {/* <Button type="success" onClick={props.onClick}>Save</Button> */}
+                <a className="card-text" href={props.website} target="_blank">Website</a>
             </div>
         </div>
     )

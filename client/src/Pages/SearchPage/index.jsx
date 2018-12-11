@@ -64,19 +64,15 @@ class SearchPage extends Component {
     renderCard() {
         if (this.state.searchOption === 'beers') {
             return <CardBeer
-                URL={this.state.image}
-                title={this.state.searchResaults.name}
-                description={this.state.searchResaults.description}
-                ABV={this.state.searchResaults.abv}
+                image={this.state.image}
+                {...this.state.searchResaults}
                 onClick={this.handleSave}
             />
         }
         else if (this.state.searchOption === 'breweries') {
             return <CardBrewery
                 URL={this.state.image}
-                title={this.state.searchResaults.name}
-                description={this.state.searchResaults.description}
-                link={this.state.searchResaults.website}
+                {...this.state.searchResaults}
             />
         }
     }
