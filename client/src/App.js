@@ -6,6 +6,7 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import Profile from './components/Profile/Profile'
 import SearchPage from "./Pages/SearchPage"
+import Scrape from "./Pages/articleScrape/index"
 
 class App extends Component {
     render() {
@@ -19,6 +20,7 @@ class App extends Component {
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/searchPage" component={SearchPage} />
+                        <Route exact path="/articles" component={Scrape} />
                     </div>
                 </div>
             </Router>
