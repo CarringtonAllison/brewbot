@@ -14,6 +14,9 @@ api.get("/getBeers/:searchType/:searchTerm", (req, res) => {
         .catch(err => { console.log(err) });
 
 });
+api.get("/beersDB", (req, res) => {
+    
+})
 
 api.get("/articles", function(req, res){
     axios.get("https://www.craftbeer.com/category/news").then(function(response) {
