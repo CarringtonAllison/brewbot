@@ -51,7 +51,6 @@ users.post('/login', (req, res) => {
     })
         .then(user => {
             if (user) {
-                console.log("hereeeeeeeee")
                 if (bcrypt.compareSync(req.body.password, user.password)) {
                     // passwords match
                     const payload = {
