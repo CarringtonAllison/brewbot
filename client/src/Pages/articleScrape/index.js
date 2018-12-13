@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import API from "../../utils/API"
-import jwt_decode from 'jwt-decode'
+import "./index.css"
 
 class Scrape extends Component {
     state = {
         results: "",
-        // first_name: '',
-        // last_name: '',
-        // email: '',
         errors: {}
     }
 
@@ -20,32 +17,35 @@ class Scrape extends Component {
 
     componentDidMount() {
         this.scrapeArticles();
-        // const token = localStorage.getItem("usertoken");
-        // const decoded = jwt_decode(token)
-        // this.setState({
-        //     first_name: decoded.first_name,
-        //     last_name: decoded.last_name,
-        //     email: decoded.email
-        // })
     }
+    
 
     render() {
         return (
             <div>
-                <ul>
+                
                     {
                         this.state.results.data ? <div>{this.state.results.data.map((result) =>
+
+                            
+                            <ul>
                             <li>
                                 <a href={result.link}>{result.title}</a>
-                                <img src={result.image}>
+                                </li>
+                            <li>
+                                <img className="articleImg" src={result.image}>
                                 </img>
-                            </li>)}
+                            </li>
+                            </ul>
+                            )}
                         </div> : <div>didnt work</div>
                     }
-
-                </ul>
+                    
+                
 
             </div>
+
+            
         )
     }
 }
