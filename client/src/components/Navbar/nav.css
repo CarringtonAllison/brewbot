@@ -44,3 +44,10 @@ body {
     margin-right: 0%;
     margin-left: 1%;
 }
+
+#box {
+    margin-left: -25%;
+    margin-right: 72%;
+    margin-top: 2%;
+    margin-bottom: 0%;
+}

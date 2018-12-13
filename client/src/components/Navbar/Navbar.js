@@ -141,7 +141,7 @@ class Landing extends Component {
                     </ul>
                     {localStorage.usertoken ? userLink : loginRegLink}
                     <div className="input-group mb-3 justify-content-md-right">
-                        <input type="text" className="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
+                        <input id="box" type="text" className="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
                         <div className="input-group-append">
                             <button className="btn btn-warning" type="button">Search</button>
                         </div>
