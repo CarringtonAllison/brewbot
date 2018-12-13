@@ -68,23 +68,23 @@ const MapWithASearchBox = compose(
             })
 
 
-            const geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ address: this.props.placeName }, (results, status) => {
-                if (status === google.maps.DirectionsStatus.OK) {
-                    const lngs = results[0].geometry.bounds.j;
-                    const lats = results[0].geometry.bounds.l;
-                    this.setState({
-                        boundSearch: new google.maps.LatLngBounds(
-                            new google.maps.LatLng(lats.l, lngs.l),
-                            new google.maps.LatLng(lats.j, lngs.j)
-                        ),
-                    });
-                } else {
-                    this.setState({
-                        error: status,
-                    });
-                }
-            });
+            // const geocoder = new google.maps.Geocoder();
+            // geocoder.geocode({ address: this.props.placeName }, (results, status) => {
+            //     if (status === google.maps.DirectionsStatus.OK) {
+            //         const lngs = results[0].geometry.bounds.j;
+            //         const lats = results[0].geometry.bounds.l;
+            //         this.setState({
+            //             boundSearch: new google.maps.LatLngBounds(
+            //                 new google.maps.LatLng(lats.l, lngs.l),
+            //                 new google.maps.LatLng(lats.j, lngs.j)
+            //             ),
+            //         });
+            //     } else {
+            //         this.setState({
+            //             error: status,
+            //         });
+            //     }
+            // });
 
         }
     }),
