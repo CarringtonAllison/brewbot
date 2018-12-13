@@ -1,0 +1,66 @@
+.container2 {
+    
+    background-color: rgba(236, 197, 69, .85);
+    text-align: left;
+    background-attachment: fixed;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    height: 95%;
+    color: #fff;
+    font-size: 120%;
+    margin-bottom: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 1.3rem;
+}
+
+#form {
+    margin-left: 0%;
+    margin-right: 70%;
+    left: 69%;
+    margin-top: 3%;
+    text-align: left;
+}
+
+.row {
+    margin-left: 0%;
+    margin-right: 0%;
+    /* background-color: rgba(236, 197, 69,); */
+    border-radius: 1.3rem;
+    margin-bottom: 5%;
+}
+#sign{
+    text-align: center;
+
+}
+
+.form-group{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0%;
+}
+.h3{
+    text-align: center;
+
+}
+.mains {
+    text-align: left;
+}
+.form-control {
+    margin-left: 0%;
+    margin-right: 70%;
+    left: 69%;
+    margin-top: 2%;
+    margin-bottom: 0%;
+}
+
+.btn {
+    color: white;
+    left: -20%;
+    margin-top: 13%;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 0%;
+}

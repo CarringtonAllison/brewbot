@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { register } from '../Userfunctions/Userfunction'
-
+import "./reg.css"
 class Register extends Component {
     constructor() {
         super()
@@ -35,13 +35,13 @@ class Register extends Component {
     }
     render() {
         return (
-            <div className="container">
+            <div className="container2">
                 <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
                         <form noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mb-3 font-weight-normal">Register</h1>
                             <div className="form-group">
-                                <label htmlFor="name">First Name</label>
+                                <label className="mains" htmlFor="name">First Name</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -52,7 +52,7 @@ class Register extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="name">Last Name</label>
+                                <label className="mains" htmlFor="name">Last Name</label>
                                 <input
                                     type="text"
                                     className="form-control"
@@ -63,7 +63,7 @@ class Register extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="name">Email address</label>
+                                <label className="mains" htmlFor="name">Email address</label>
                                 <input
                                     type="email"
                                     className="form-control"
@@ -74,7 +74,7 @@ class Register extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="name">Password </label>
+                                <label className="mains" htmlFor="name">Password </label>
                                 <input
                                     type="password"
                                     className="form-control"
