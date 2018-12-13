@@ -13,7 +13,10 @@ const API = {
         return Axios.get("/api/beersDB/" + searchKey);
     },
     addFavorites: function(body){
-        return Axios.post("/api/postFavorite", body);
+        return Axios.put("/api/postFavorite", body);
+    },
+    addBeerToDB: function(body){
+        return Axios.post("/api/addBeers", body);
     }
 }
 

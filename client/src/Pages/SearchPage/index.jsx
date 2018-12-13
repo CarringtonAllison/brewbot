@@ -48,7 +48,6 @@ class SearchPage extends Component {
             email: this.state.email
         }
         API.addFavorites(obj).then(data => console.log(data)).catch(err => console.log(err));
-
     }
 
     handleFormSubmit = e => {
