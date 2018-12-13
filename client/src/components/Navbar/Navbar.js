@@ -104,6 +104,7 @@ class Landing extends Component {
                     <Link to="/profile" className="nav-link">
                         User
                     </Link>
+
                 </li>
                 <li className="navitem">
                     <Link to="/searchPage" className="nav-link">Search Page</Link>

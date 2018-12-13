@@ -3,10 +3,9 @@ const users = express.Router();
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../models/User');
+const db = require("../../models/index")
+const User = db.User;
 
-
-process.env.SECRET_Key = 'secret'
 
 users.post('/register', (req, res) => {
     const today = new Date()
@@ -53,7 +52,6 @@ users.post('/login', (req, res) => {
     })
         .then(user => {
             if (user) {
-                console.log("hereeeeeeeee")
                 if (bcrypt.compareSync(req.body.password, user.password)) {
                     // passwords match
                     const payload = {
@@ -67,8 +65,9 @@ users.post('/login', (req, res) => {
                     })
                     res.send(token)
                 } else {
+                    console.log('incorrect password')
                     // passwords dont match
-                    res.json({ error: 'User does not exist' })
+                    res.json({ error: 'incorrect password' })
                 }
             } else {
                 res.json({ error: 'User does not exist' })
@@ -98,7 +97,25 @@ users.get('/profile', (req, res) => {
         .catch(err => {
             res.send('error:' + err)
         })
-})
+});
 
+users.get('/searchPage', (req, res) => {
+
+    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    User.findOne({
+        _id: decoded._id
+    })
+        .then(user => {
+            if (user) {
+                res.json(user)
+            } else {
+                res.send('user does not exist')
+            }
+        })
+        .catch(err => {
+            res.send('error:' + err)
+        })
+})
 
 module.exports = users;

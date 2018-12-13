@@ -7,6 +7,7 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            incorrectCred: '',
             errors: {}
         }
 
@@ -23,12 +24,18 @@ class Login extends Component {
 
         const user = {
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            incorrectCred: this.state.incorrectCred
         }
 
         login(user).then(res => {
-            console.log("here " + res)
-            if (res) {
+            console.log("here " + JSON.stringify(res))
+            if(res.error){
+                this.setState({incorrectCred: "incorrect login credentials... please try again!"})
+                
+
+            }
+            else {
                 this.props.history.push('/profile')
             }
         })
@@ -42,7 +49,12 @@ class Login extends Component {
                         <form noValidate onSubmit={this.onSubmit}>
                             <h1 className="h3 mb-3 font-weight-normal" id="sign">Please sign in</h1>
                             <div className="form-group">
+
                                 <label htmlFor="email">Email Address:</label>
+          
+                                <div 
+                                onChange={this.onChange}>{this.state.incorrectCred}</div>
+
                                 <input
                                     type="email"
                                     className="form-control"
