@@ -10,12 +10,10 @@ import API from "../../utils/API"
 
 let defaultImage = 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/11/20/0/fnd_beer-istock.jpg.rend.hgtvcom.616.462.suffix/1448031613421.jpeg'
 
-
 class SearchPage extends Component {
     state = {
         search: "",
         searchResaults: {},
-        favorits: [],
         image: defaultImage,
         searchOption: "beers",
         first_name: '',
@@ -46,23 +44,38 @@ class SearchPage extends Component {
         let obj = {
             name: this.state.searchResaults.name,
             description: this.state.searchResaults.description,
-            abv: this.state.searchResaults.abv
+            abv: this.state.searchResaults.abv,
+            email: this.state.email
         }
-        this.state.favorits.push(obj);
+        API.addFavorites(obj).then(data => console.log(data)).catch(err => console.log(err));
 
-        console.log(this.state.favorits);
     }
 
     handleFormSubmit = e => {
         e.preventDefault();
 
-        API.getbeer(this.state.searchOption, this.state.search)
-            .then(res => {
+        API.getBeerDB(this.state.search).then(res => {
+            if (res.data[0]) {
                 this.setState({
-                    searchResaults: res.data.data[0],
-                    image: this.handleImages(res)
+                    searchResaults: {
+                        name: res.data[0].name,
+                        description: res.data[0].descript,
+                        abv: res.data[0].abv,
+                        image: defaultImage
+                    }
                 })
-            }).catch(err => console.log(err));
+            }
+            else {
+                API.getbeer(this.state.searchOption, this.state.search)
+                    .then(res => {
+                        this.setState({
+                            searchResaults: res.data.data[0],
+                            image: this.handleImages(res)
+                        })
+                    }).catch(err => console.log(err));
+            }
+
+        }).catch(err => console.log(err));
 
         console.log("Submited");
     }

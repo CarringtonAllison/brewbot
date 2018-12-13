@@ -7,6 +7,13 @@ const API = {
 
     getArticles: function(){
         return Axios.get("/api/articles");
+    },
+
+    getBeerDB: function(searchKey){
+        return Axios.get("/api/beersDB/" + searchKey);
+    },
+    addFavorites: function(body){
+        return Axios.post("/api/postFavorite", body);
     }
 }
 
