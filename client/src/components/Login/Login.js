@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { login } from '../Userfunctions/Userfunction'
-
+import "./login.css"
 class Login extends Component {
     constructor() {
         super()
@@ -36,16 +36,17 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container2">
                 <div className="row">
                     <div className="col-md-6 mt-5 mx-auto">
                         <form noValidate onSubmit={this.onSubmit}>
-                            <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            <h1 className="h3 mb-3 font-weight-normal" id="sign">Please sign in</h1>
                             <div className="form-group">
-                                <label htmlFor="email">Email Address</label>
+                                <label htmlFor="email">Email Address:</label>
                                 <input
                                     type="email"
                                     className="form-control"
+                                    id="form"
                                     name="email"
                                     placeholder="Enter email"
                                     value={this.state.email}
@@ -53,10 +54,11 @@ class Login extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">Password:</label>
                                 <input
                                     type="password"
                                     className="form-control"
+                                    id="form"
                                     name="password"
                                     placeholder="Password"
                                     value={this.state.password}
