@@ -5,9 +5,9 @@ import jwt_decode from 'jwt-decode'
 class Scrape extends Component {
     state = {
         results: "",
-        first_name: '',
-        last_name: '',
-        email: '',
+        // first_name: '',
+        // last_name: '',
+        // email: '',
         errors: {}
     }
 
@@ -20,13 +20,13 @@ class Scrape extends Component {
 
     componentDidMount() {
         this.scrapeArticles();
-        const token = localStorage.getItem("usertoken");
-        const decoded = jwt_decode(token)
-        this.setState({
-            first_name: decoded.first_name,
-            last_name: decoded.last_name,
-            email: decoded.email
-        })
+        // const token = localStorage.getItem("usertoken");
+        // const decoded = jwt_decode(token)
+        // this.setState({
+        //     first_name: decoded.first_name,
+        //     last_name: decoded.last_name,
+        //     email: decoded.email
+        // })
     }
 
     render() {
