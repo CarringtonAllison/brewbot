@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import API from "../../utils/API"
-import jwt_decode from 'jwt-decode'
+import "./index.css"
 
 class Scrape extends Component {
     state = {
         results: "",
-        // first_name: '',
-        // last_name: '',
-        // email: '',
         errors: {}
     }
 
@@ -20,32 +17,40 @@ class Scrape extends Component {
 
     componentDidMount() {
         this.scrapeArticles();
-        // const token = localStorage.getItem("usertoken");
-        // const decoded = jwt_decode(token)
-        // this.setState({
-        //     first_name: decoded.first_name,
-        //     last_name: decoded.last_name,
-        //     email: decoded.email
-        // })
     }
+//     <div class="card" style="width: 18rem;">
+//   <img class="card-img-top" src={result.image} alt="Card image cap">
+//   <div class="card-body">
+//     <p class="card-text">{result.title}</p>
+//     <a href={result.link} class="btn btn-primary">Check it out!</a>
+//   </div>
+// </div>
 
     render() {
         return (
-            <div>
-                <ul>
+            <div className="row flex">
+                
                     {
                         this.state.results.data ? <div>{this.state.results.data.map((result) =>
-                            <li>
-                                <a href={result.link}>{result.title}</a>
-                                <img src={result.image}>
-                                </img>
-                            </li>)}
+
+                            
+                            <div className="card">
+                            <img className="card-img-top articleImg" src={result.image} alt="Card image cap"/>
+                            <div className="card-body">
+                            <h3>{result.author}</h3>
+                              <p className="card-text">{result.title}</p>
+                              <a href={result.link} className="btn btn-primary">Check it out!</a>
+                            </div>
+                          </div>
+                            )}
                         </div> : <div>didnt work</div>
                     }
-
-                </ul>
+                    
+                
 
             </div>
+
+            
         )
     }
 }
