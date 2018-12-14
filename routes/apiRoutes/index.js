@@ -34,7 +34,7 @@ api.get("/beersDB/:name", (req, res) => {
     })
 });
 
-api.post("/postFavorite", (req, res) => {
+api.put("/postFavorite", (req, res) => {
     console.log(req.body);
     var userEmail = req.body.email;
     var obj = {
@@ -47,6 +47,24 @@ api.post("/postFavorite", (req, res) => {
         (err, response) => {
             res.send(response);
         });
+});
+
+api.get("/getFav/:email", (req, res) => {
+    var userEmail = req.params.email;
+
+    User.find({email: userEmail}, (err, response)=>{
+        res.send(response);
+    })
+})
+
+api.post("/addBeers", (req, res) => {
+    var obj = {
+        name: req.body.name,
+        abv: req.body.abv,
+        descript: req.body.description
+    }
+
+    Beer.create(obj).then(beer => res.send(beer)).catch(err => console.log(err));
 })
 
 api.get("/articles", function (req, res) {
