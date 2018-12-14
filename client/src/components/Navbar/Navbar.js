@@ -110,8 +110,12 @@ class Landing extends Component {
                     <Link to="/searchPage" className="nav-link">Search Page</Link>
                 </li>
                 <li className="navitem">
+                    <Link to="/articles" className="nav-link">News</Link>
+                </li>
+                <li className="navitem">
                     <a href="/login" onClick={this.logOut.bind(this)} className="nav-link">Logout</a>
                 </li>
+                
             </ul>
         )
 
