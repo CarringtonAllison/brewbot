@@ -30,9 +30,9 @@ class Login extends Component {
 
         login(user).then(res => {
             console.log("here " + JSON.stringify(res))
-            if(res.error){
-                this.setState({incorrectCred: "incorrect login credentials... please try again!"})
-                
+            if (res.error) {
+                this.setState({ incorrectCred: "incorrect login credentials... please try again!" })
+
 
             }
             else {
@@ -43,47 +43,40 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="container2">
-                <div className="row">
-                    <div className="col-md-6 mt-5 mx-auto">
-                        <form noValidate onSubmit={this.onSubmit}>
-                            <h1 className="h3 mb-3 font-weight-normal" id="sign">Please sign in</h1>
-                            <div className="form-group">
-
-                                <label htmlFor="email">Email Address:</label>
-          
-                                <div 
+            <div className="row justify-content-center center">
+                <div className="col col-lg-8 login">
+                    <form className="formWork" noValidate onSubmit={this.onSubmit}>
+                        <h1 className="h3 mb-3 font-weight-normal" id="sign">Please Sign In</h1>
+                        <div className="form-group">
+                            <div
                                 onChange={this.onChange}>{this.state.incorrectCred}</div>
-
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    id="form"
-                                    name="email"
-                                    placeholder="Enter email"
-                                    value={this.state.email}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="password">Password:</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="form"
-                                    name="password"
-                                    placeholder="Password"
-                                    value={this.state.password}
-                                    onChange={this.onChange}
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="btn btn-lg btn-primary btn-block">
-                                Sign in
+                            <input
+                                type="email"
+                                className="form-control center"
+                                id="form"
+                                name="email"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.onChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                className="form-control center"
+                                id="form"
+                                name="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.onChange}
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="btn btn-lg buttonStyle">
+                            Sign in
                             </button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         )

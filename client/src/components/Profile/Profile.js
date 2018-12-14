@@ -24,30 +24,25 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="jumbotron col-lg-12 mt-5">
-                        <div className="mx-auto">
-                            <h1 className="text-center">Profile</h1>
-                        </div>
-                        <table className="table col-md-6 mx-auto">
-                            <tbody>
-                                <tr>
-                                    <td>First Name</td>
-                                    <td>{this.state.first_name}</td>
-                                </tr>
-                                <tr>
-                                    <td>Last Name</td>
-                                    <td>{this.state.last_name}</td>
-                                </tr>
 
-                            </tbody>
-                        </table>
+            <div className="row">
+                <div className="jumbotron col-lg-12 mt-5">
+                    <div className="mx-auto">
+                        <h1 className="text-center">Profile</h1>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col beerList"></div>
-                    <div className="col beerList"></div>
+                    <table className="table col-md-6 mx-auto">
+                        <tbody>
+                            <tr>
+                                <td>First Name</td>
+                                <td>{this.state.first_name}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td>{this.state.last_name}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )

@@ -115,12 +115,12 @@ class Landing extends Component {
                 <li className="navitem">
                     <a href="/login" onClick={this.logOut.bind(this)} className="nav-link">Logout</a>
                 </li>
-                
+
             </ul>
         )
 
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark rounded">
+            <div className="navbar-expand-lg d-flex justify-content-center">
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -133,11 +133,11 @@ class Landing extends Component {
                     </span>
                 </button>
 
-                <div className="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                <div className="collapse navbar-collapse justify-content-between" id="navbarsExample10">
                     <h3 id="title">Brew Bot</h3>
                     {localStorage.usertoken ? userLink : loginRegLink}
                 </div>
-            </nav>
+            </div>
         )
     }
 }
