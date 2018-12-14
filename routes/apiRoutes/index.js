@@ -71,10 +71,13 @@ api.get("/articles", function (req, res) {
 
             var image = $(element).children("figure.post-thumbnail").children("a").children("img").attr("src");
 
+            var author = $(element).children("header").children("h4.byline.above").text().trim();
+            console.log(author);
             var json = {
                 title: title,
                 link: link,
-                image: image
+                image: image,
+                author: author
             }
             console.log(json);
             arr.push(json)
