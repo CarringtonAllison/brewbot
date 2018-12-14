@@ -17,7 +17,11 @@ const API = {
     },
     addBeerToDB: function(body){
         return Axios.post("/api/addBeers", body);
+    },
+    getFavBeers: function(body){
+        return Axios.get("/api/getFav/"+ body);
     }
+
 }
 
 module.exports = API;

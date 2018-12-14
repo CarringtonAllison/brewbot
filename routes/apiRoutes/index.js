@@ -49,7 +49,15 @@ api.put("/postFavorite", (req, res) => {
         });
 });
 
-api.post("/addBeers", (req, res)=> {
+api.get("/getFav/:email", (req, res) => {
+    var userEmail = req.params.email;
+
+    User.find({email: userEmail}, (err, response)=>{
+        res.send(response);
+    })
+})
+
+api.post("/addBeers", (req, res) => {
     var obj = {
         name: req.body.name,
         abv: req.body.abv,

@@ -5,8 +5,10 @@ import Button from "../../components/Button";
 import CardBeer from "../../components/CardBeer";
 import CardBrewery from "../../components/CardBrewery";
 import DropDown from "../../components/DropDown";
+import FavCard from "../../components/favoriteCard"
 import jwt_decode from 'jwt-decode';
 import API from "../../utils/API"
+
 
 let defaultImage = 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/11/20/0/fnd_beer-istock.jpg.rend.hgtvcom.616.462.suffix/1448031613421.jpeg'
 
@@ -19,7 +21,8 @@ class SearchPage extends Component {
         first_name: '',
         last_name: '',
         email: '',
-        errors: {}
+        errors: {},
+        fav: []
     }
 
     componentDidMount() {
@@ -67,10 +70,16 @@ class SearchPage extends Component {
             else {
                 API.getbeer(this.state.searchOption, this.state.search)
                     .then(res => {
-                        this.setState({
-                            searchResaults: res.data.data[0],
-                            image: this.handleImages(res)
-                        })
+                        if (res.data.data) {
+                            this.setState({
+                                searchResaults: res.data.data[0],
+                                image: this.handleImages(res)
+                            });
+                        }
+                        else {
+                            // modal needs to go here!!!!!!!!!!!!!!!
+                            console.log("This doest exist");
+                        }
                     }).catch(err => console.log(err));
             }
 
@@ -102,6 +111,15 @@ class SearchPage extends Component {
                 {...this.state.searchResaults}
             />
         }
+    }
+
+    favBeers() {
+        API.getFavBeers(this.state.email)
+            .then(res => {
+                this.setState({
+                    fav: res.data[0].favorites
+                });
+            }).catch(err => console.log(err));
     }
 
     render() {

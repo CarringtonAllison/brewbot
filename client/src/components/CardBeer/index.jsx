@@ -2,7 +2,6 @@ import React from "react";
 import Button from "../Button"
 
 function JumboTron(props) {
-    console.log(props);
     return (
         <div className="card">
             <img className="card-img-top"
