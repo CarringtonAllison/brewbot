@@ -102,7 +102,7 @@ class Landing extends Component {
             <ul className="navbar-nav">
                 <li className="navitem">
                     <Link to="/profile" className="nav-link">
-                        User
+                        Home
                     </Link>
 
                 </li>
@@ -115,12 +115,12 @@ class Landing extends Component {
                 <li className="navitem">
                     <a href="/login" onClick={this.logOut.bind(this)} className="nav-link">Logout</a>
                 </li>
-                
+
             </ul>
         )
 
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark rounded">
+            <div className="navbar-expand-lg d-flex justify-content-center">
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -133,25 +133,11 @@ class Landing extends Component {
                     </span>
                 </button>
 
-                <div className="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
-                    <h3 id="title">Brew </h3>
-                    <h3 id="title">Bot</h3>
-                    <ul className="navbar-nav" id="home">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">
-                                Home
-                            </Link>
-                        </li>
-                    </ul>
+                <div className="collapse navbar-collapse justify-content-between" id="navbarsExample10">
+                    <h3 id="title">Brew Bot</h3>
                     {localStorage.usertoken ? userLink : loginRegLink}
-                    <div className="input-group mb-3 justify-content-md-right">
-                        <input id="box" type="text" className="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2"></input>
-                        <div className="input-group-append">
-                            <button className="btn btn-warning" type="button">Search</button>
-                        </div>
-                    </div>
                 </div>
-            </nav>
+            </div>
         )
     }
 }

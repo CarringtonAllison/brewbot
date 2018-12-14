@@ -1,53 +1,42 @@
-#navbarsExample10{
-    background-color: rgba(78, 42, 12, .95);
-    border-radius: 1rem;
-}
-/* .input{
-    margin-left: 150%;
-    border-radius: .5rem;
-}
-.glyphicon{
-    margin-left: 225%;
-    border-radius: .5rem;
-} */
-.btn{
-    color: white;
-    left: -20%;
-    margin-top: 13%;
-    margin-left: 5%;
-    margin-right: 0%;
-    margin-bottom: 0%;
-}
-.form-control{  
-    margin-left: -15%;
-    margin-right: 70%;
-    left: 69%;
-    margin-top: 2%;
-    margin-bottom: 0%;
-}
+
 body {
-    background-image: url("http://www.frankenmuthbrewery.com/blog/wp-content/uploads/2012/09/beer-twitter-backgrounds-1b.jpg");
+    background-image: url("https://stmed.net/sites/default/files/beer-wallpapers-28209-344122.jpg");
     background-attachment: fixed;
-    background-position: center bottom;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.navbar-nav{
-    margin-right: 0%;
-    margin-left: 0%;
-}
-#home{
-    margin-left: 32%;
-}
-#title {
-    color: white;
-    margin-right: 0%;
-    margin-left: 1%;
+
+
+#navbarsExample10{
+    background-color: rgba(212, 189, 157, 0.6);
+    color: #cc8200;
+    padding: 20px; 
+    font-family: 'Beer';
+    font-size: 31px;
 }
 
-#box {
-    margin-left: -25%;
-    margin-right: 72%;
-    margin-top: 2%;
-    margin-bottom: 0%;
+
+.nav-link {
+    color: white; 
+    font-size: 20px; 
+    transition: .25s ease
+}
+
+.nav-link:hover {
+    transform: scale(1.1); 
+    color: #cc8200; 
+}
+
+.navbar-toggler-icon {
+    background-image: url("https://cdn4.iconfinder.com/data/icons/beer-line/100/l-23-512.png"); 
+}
+
+@font-face{
+    font-family: 'Beer';
+    src: url("../Images/junegull\ rg.ttf")
+}
+
+.navbar-toggler {
+    font-size: 40px; 
 }

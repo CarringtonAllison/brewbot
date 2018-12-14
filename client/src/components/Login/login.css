@@ -1,36 +1,22 @@
-.container2 {
-    
-    background-color: rgba(236, 197, 69, .85);
-    text-align: left;
-    background-attachment: fixed;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: auto;
-    height: 95%;
-    color: #fff;
-    font-size: 120%;
-    margin-bottom: 5%;
-    margin-left: 20%;
-    margin-right: 20%;
-    border-radius: 1.3rem;
+.login {
+    background: rgba(0, 0, 0, .5);
+    padding: 30px; 
+    border-radius: 20px; 
+    margin-top: 80px; 
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-#form {
-    margin-left: 0%;
-    margin-right: 70%;
-    left: 69%;
-    margin-top: 3%;
+.center {
+    text-align: center
 }
 
-.row {
-    margin-left: 0%;
-    margin-right: 0%;
-    /* background-color: rgba(236, 197, 69,); */
-    border-radius: 1.3rem;
-    margin-bottom: 5%;
-}
-#sign{
-    text-align: center;
 
+.formWork {
+    color: white; 
+}
+
+
+.buttonStyle {
+    background-color: #cc8200;
 }
