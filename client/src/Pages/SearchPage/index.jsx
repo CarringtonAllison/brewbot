@@ -2,106 +2,150 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from "../../components/Grid";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import Card from "../../components/Card";
+import CardBeer from "../../components/CardBeer";
+import CardBrewery from "../../components/CardBrewery";
 import DropDown from "../../components/DropDown";
-
-import axios from 'axios'
+import jwt_decode from 'jwt-decode';
+import API from "../../utils/API"
 
 let defaultImage = 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/11/20/0/fnd_beer-istock.jpg.rend.hgtvcom.616.462.suffix/1448031613421.jpeg'
 
-
 class SearchPage extends Component {
-  state = {
-    search: "",
-    searchResaults: {},
-    favorits: [],
-    image: defaultImage
-  }
-
-  handleInputChange = e => {
-    const { name, value } = e.target;
-    console.log(value);
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSave = e => {
-    e.preventDefault();
-    let obj = {
-      name: this.state.searchResaults.name,
-      description: this.state.searchResaults.description,
-      abv: this.state.searchResaults.abv
+    state = {
+        search: "",
+        searchResaults: {},
+        image: defaultImage,
+        searchOption: "beers",
+        first_name: '',
+        last_name: '',
+        email: '',
+        errors: {}
     }
-    this.state.favorits.push(obj);
 
-    console.log(this.state.favorits);
-  }
+    componentDidMount() {
+        const token = localStorage.getItem("usertoken");
+        const decoded = jwt_decode(token)
+        this.setState({
+            first_name: decoded.first_name,
+            last_name: decoded.last_name,
+            email: decoded.email
+        })
+    }
 
-  handleFormSubmit = e => {
-    e.preventDefault();
-    let URL = "https://cors-escape.herokuapp.com/https://api.brewerydb.com/v2/beers//?key=091aef518454c817284027220f913f6c&name=" + this.state.search;
+    handleInputChange = e => {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value
+        });
+    }
 
-    axios.get(URL).then(res => {
-      this.setState({
-        searchResaults: res.data.data[0],
-        image: (res.data.data[0].labels ? res.data.data[0].labels.contentAwareLarge : defaultImage)
-      })
+    handleSave = e => {
+        e.preventDefault();
+        let obj = {
+            name: this.state.searchResaults.name,
+            description: this.state.searchResaults.description,
+            abv: this.state.searchResaults.abv,
+            email: this.state.email
+        }
+        API.addFavorites(obj).then(data => console.log(data)).catch(err => console.log(err));
 
-      console.log(this.state.searchResaults);
+    }
 
-    }).catch(err => console.log(err));
+    handleFormSubmit = e => {
+        e.preventDefault();
 
-    console.log("Submited");
-  }
+        API.getBeerDB(this.state.search).then(res => {
+            if (res.data[0]) {
+                this.setState({
+                    searchResaults: {
+                        name: res.data[0].name,
+                        description: res.data[0].descript,
+                        abv: res.data[0].abv,
+                        image: defaultImage
+                    }
+                })
+            }
+            else {
+                API.getbeer(this.state.searchOption, this.state.search)
+                    .then(res => {
+                        this.setState({
+                            searchResaults: res.data.data[0],
+                            image: this.handleImages(res)
+                        })
+                    }).catch(err => console.log(err));
+            }
 
-  render() {
-    return (
-      <Container>
-        <Row>
-          <Col size="sm-12">
-            <form>
-              <Container>
-                <Row>
-                  <Col size="xs-8 sm-8">
-                    <Input
-                      name="search"
-                      value={this.state.search}
-                      onChange={this.handleInputChange}
-                      placeholder="Search For Beers"
-                    />
-                  </Col>
-                  <Col size="xs-10 sm-2">
-                    <DropDown></DropDown>
-                  </Col>
-                  <Col size="xs-10 sm-2">
-                    <Button
-                      onClick={this.handleFormSubmit}
-                      type="success"
-                      className="input-lg"
-                    > Search </Button>
-                  </Col>
-                </Row>
-              </Container>
-            </form>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="sm-3"></Col>
-          <Col size="sm">
-            <Card
-              URL={this.state.image}
-              title={this.state.searchResaults.name}
-              description={this.state.searchResaults.description}
-              ABV={this.state.searchResaults.abv}
-              onClick={this.handleSave}
+        }).catch(err => console.log(err));
+
+        console.log("Submited");
+    }
+
+    handleImages(res) {
+        if (this.state.searchOption === "beers") {
+            return res.data.data[0].labels ? res.data.data[0].labels.contentAwareLarge : defaultImage;
+        }
+        else if (this.state.searchOption === "breweries") {
+            return res.data.data[0].images ? res.data.data[0].images.large : defaultImage;
+        }
+    }
+
+    renderCard() {
+        if (this.state.searchOption === 'beers') {
+            return <CardBeer
+                image={this.state.image}
+                {...this.state.searchResaults}
+                onClick={this.handleSave}
             />
-          </Col>
-          <Col size="sm-3"></Col>
-        </Row>
-      </Container>
-    );
-  }
+        }
+        else if (this.state.searchOption === 'breweries') {
+            return <CardBrewery
+                URL={this.state.image}
+                {...this.state.searchResaults}
+            />
+        }
+    }
+
+    render() {
+        return (
+            <Container>
+                <Row>
+                    <Col size="sm-12">
+                        <form>
+                            <Container>
+                                <Row>
+                                    <Col size="xs-8 sm-8">
+                                        <Input
+                                            name="search"
+                                            value={this.state.search}
+                                            onChange={this.handleInputChange}
+                                            placeholder="Search For Beers"
+                                        />
+                                    </Col>
+                                    <Col size="xs-10 sm-2">
+                                        <DropDown onChange={this.handleInputChange}></DropDown>
+                                    </Col>
+                                    <Col size="xs-10 sm-2">
+                                        <Button
+                                            onClick={this.handleFormSubmit}
+                                            type="success"
+                                            className="input-lg"
+                                        > Search </Button>
+                                    </Col>
+                                </Row>
+                            </Container>
+                        </form>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col size="sm-3"></Col>
+                    <Col size="sm">
+                        {this.renderCard()}
+                    </Col>
+                    <Col size="sm-3"></Col>
+                </Row>
+            </Container>
+        );
+    }
 }
 
 export default SearchPage;
