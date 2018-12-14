@@ -18,25 +18,30 @@ class Scrape extends Component {
     componentDidMount() {
         this.scrapeArticles();
     }
-    
+//     <div class="card" style="width: 18rem;">
+//   <img class="card-img-top" src={result.image} alt="Card image cap">
+//   <div class="card-body">
+//     <p class="card-text">{result.title}</p>
+//     <a href={result.link} class="btn btn-primary">Check it out!</a>
+//   </div>
+// </div>
 
     render() {
         return (
-            <div>
+            <div className="row flex">
                 
                     {
                         this.state.results.data ? <div>{this.state.results.data.map((result) =>
 
                             
-                            <ul>
-                            <li>
-                                <a href={result.link}>{result.title}</a>
-                                </li>
-                            <li>
-                                <img className="articleImg" src={result.image}>
-                                </img>
-                            </li>
-                            </ul>
+                            <div className="card">
+                            <img className="card-img-top articleImg" src={result.image} alt="Card image cap"/>
+                            <div className="card-body">
+                            <h3>{result.author}</h3>
+                              <p className="card-text">{result.title}</p>
+                              <a href={result.link} className="btn btn-primary">Check it out!</a>
+                            </div>
+                          </div>
                             )}
                         </div> : <div>didnt work</div>
                     }
