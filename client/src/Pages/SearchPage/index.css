@@ -1,0 +1,17 @@
+form {
+    padding: 20px;
+}
+
+.center {
+    text-align: center; 
+}
+
+.background2 {
+    transition: .25s ease; 
+    background-color: rgba(45, 0, 0, 0.75);
+    margin: 20px; 
+    color: white; 
+    padding: 20px;
+    box-shadow: 0px 0px 5px 4px black; 
+    border-radius: 10px; 
+}
