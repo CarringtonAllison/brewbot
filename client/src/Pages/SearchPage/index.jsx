@@ -143,7 +143,6 @@ class SearchPage extends Component {
                         <div className="col pad center">
                             <Button
                                 onClick={this.handleFormSubmit}
-                                type="success"
                                 className="input-lg"
                             > Search </Button>
                         </div>

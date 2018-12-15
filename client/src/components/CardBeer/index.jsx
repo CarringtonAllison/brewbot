@@ -8,12 +8,12 @@ function JumboTron(props) {
             <img className="imgLoad"
                 src={props.image}
                 alt="Beer" />
-            <div className="card-body">
+            <div>
                 {
                     ( /*Ternary start */
                         props.name ?
                             ( /*Check is true then do this */
-                                <div>
+                                <div className="card-body">
                                     <h5 className="card-title">{props.name}</h5>
                                     <p className="card-text">{props.description}</p>
                                     <p className="card-text">ABV: {props.abv}</p>

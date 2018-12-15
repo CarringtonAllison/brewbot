@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import jwt_decode from 'jwt-decode'
-
+import React, { Component } from 'react';
+import jwt_decode from 'jwt-decode';
+import Google from "../Google/SearchBox"
 class Profile extends Component {
     constructor() {
         super()
@@ -43,6 +43,9 @@ class Profile extends Component {
 
                         </tbody>
                     </table>
+                </div>
+                <div className="col">
+                    <Google />
                 </div>
             </div>
         )
