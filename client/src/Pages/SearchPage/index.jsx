@@ -125,30 +125,37 @@ class SearchPage extends Component {
 
     render() {
         return (
-            <div className="row background2">
-                <div className="col d-flex justify-content-center align-items-center ">
-                    <form className="col">
-                        <div className="col pad">
-                            <Input
-                                name="search"
-                                value={this.state.search}
-                                onChange={this.handleInputChange}
-                                placeholder="Search For Beers"
-                            />
-                        </div>
-                        <div className="col pad">
-                            <DropDown onChange={this.handleInputChange}></DropDown>
-                        </div>
-
-                        <div className="col pad center">
-                            <Button
-                                onClick={this.handleFormSubmit}
-                                className="input-lg"
-                            > Search </Button>
-                        </div>
-                    </form>
+            <div className="background2">
+                <div className="row text-center">
+                    <div className="col">
+                        <h1 className='font'>Explore</h1>
+                    </div>
                 </div>
-                {this.renderCard()}
+                <div className="row">
+                    <div className="col d-flex justify-content-center align-items-center ">
+                        <form className="col">
+                            <div className="col pad">
+                                <Input
+                                    name="search"
+                                    value={this.state.search}
+                                    onChange={this.handleInputChange}
+                                    placeholder="Search For Beers"
+                                />
+                            </div>
+                            <div className="col pad">
+                                <DropDown onChange={this.handleInputChange}></DropDown>
+                            </div>
+
+                            <div className="col pad center">
+                                <Button
+                                    onClick={this.handleFormSubmit}
+                                    className="input-lg"
+                                > Search </Button>
+                            </div>
+                        </form>
+                    </div>
+                    {this.renderCard()}
+                </div>
             </div>
 
         );
