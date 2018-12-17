@@ -1,18 +1,19 @@
 import React from "react";
 import Button from "../Button"
+import './index.css'
 
 function JumboTron(props) {
     return (
-        <div className="card">
-            <img className="card-img-top"
+        <div className="col center">
+            <img className="imgLoad"
                 src={props.image}
-                alt="" />
-            <div className="card-body">
+                alt="Beer" />
+            <div>
                 {
                     ( /*Ternary start */
                         props.name ?
                             ( /*Check is true then do this */
-                                <div>
+                                <div className="card-body">
                                     <h5 className="card-title">{props.name}</h5>
                                     <p className="card-text">{props.description}</p>
                                     <p className="card-text">ABV: {props.abv}</p>
@@ -21,9 +22,7 @@ function JumboTron(props) {
                             ) /*End*/
                             :
                             ( /* check is false do this */
-                                <div>
-                                    <h5 className="card-title">Please Search For a Beer/Brewery</h5>
-                                </div>
+                                null
                             ) /*End*/
                     )/*Ternary End */
                 }
