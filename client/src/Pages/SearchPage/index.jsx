@@ -8,6 +8,7 @@ import DropDown from "../../components/DropDown";
 import FavCard from "../../components/favoriteCard"
 import jwt_decode from 'jwt-decode';
 import API from "../../utils/API";
+import titlecase from "../../utils/titlecase"
 import './index.css'
 
 
@@ -38,6 +39,7 @@ class SearchPage extends Component {
 
     handleInputChange = e => {
         const { name, value } = e.target;
+
         this.setState({
             [name]: value
         });
@@ -56,8 +58,10 @@ class SearchPage extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
+        let search = titlecase(this.state.search.trim());
+        console.log(search)
 
-        API.getBeerDB(this.state.search).then(res => {
+        API.getBeerDB(search).then(res => {
             if (res.data[0]) {
                 this.setState({
                     searchResaults: {
