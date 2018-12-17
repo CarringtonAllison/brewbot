@@ -17,7 +17,7 @@
 }
 
 
-.formWork {
+.formWorks {
     color: white; 
     font-family: 'Beer'
 }
@@ -25,4 +25,9 @@
 
 .buttonStyle {
     background-color: #cc8200;
+}
+
+
+#sign {
+    font-family: 'Beer'
 }
