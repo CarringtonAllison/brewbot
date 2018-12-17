@@ -39,7 +39,7 @@ class Register extends Component {
             <div className="row justify-content-center center">
                 <div className="col col-lg-8 login">
                     <form className="formWork" noValidate onSubmit={this.onSubmit}>
-                        <h1 className="h3 mb-3 font-weight-normal">Register</h1>
+                        <h1 id="registerSign" className="h3 mb-3 font-weight-normal">Register</h1>
                         <div className="form-group">
                             <input
                                 type="text"

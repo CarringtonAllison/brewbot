@@ -45,7 +45,7 @@ class AddBeers extends Component {
             <div className="row justify-content-center">
                 <div className=" login col-10">
                     <div className="col">
-                        <h1 className="center formWork">Add Beer</h1>
+                        <h1 className="center formWorks">Add Beer</h1>
                     </div>
                     <form className="col">
                         <div className="col pad">
