@@ -6,7 +6,7 @@ const DropDown = (props) => {
         <div className="form-group">
             <select className="form-control form-control-lg" id="beerOrBrewery" name="searchOption" {...props}>
                 <option value="beers">Beer</option>
-                <option value="breweries">Brewery</option>
+                <option value="breweries">Breweries (coming soon)</option>
             </select>
         </div>
     )
