@@ -7,7 +7,8 @@ import CardBrewery from "../../components/CardBrewery";
 import DropDown from "../../components/DropDown";
 import FavCard from "../../components/favoriteCard"
 import jwt_decode from 'jwt-decode';
-import API from "../../utils/API"
+import API from "../../utils/API";
+import './index.css'
 
 
 let defaultImage = 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/11/20/0/fnd_beer-istock.jpg.rend.hgtvcom.616.462.suffix/1448031613421.jpeg'
@@ -124,43 +125,39 @@ class SearchPage extends Component {
 
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col size="sm-12">
-                        <form>
-                            <Container>
-                                <Row>
-                                    <Col size="xs-8 sm-8">
-                                        <Input
-                                            name="search"
-                                            value={this.state.search}
-                                            onChange={this.handleInputChange}
-                                            placeholder="Search For Beers"
-                                        />
-                                    </Col>
-                                    <Col size="xs-10 sm-2">
-                                        <DropDown onChange={this.handleInputChange}></DropDown>
-                                    </Col>
-                                    <Col size="xs-10 sm-2">
-                                        <Button
-                                            onClick={this.handleFormSubmit}
-                                            type="success"
-                                            className="input-lg"
-                                        > Search </Button>
-                                    </Col>
-                                </Row>
-                            </Container>
+            <div className="background2">
+                <div className="row text-center">
+                    <div className="col">
+                        <h1 className='font'>Explore</h1>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col d-flex justify-content-center align-items-center ">
+                        <form className="col">
+                            <div className="col pad">
+                                <Input
+                                    name="search"
+                                    value={this.state.search}
+                                    onChange={this.handleInputChange}
+                                    placeholder="Search For Beers"
+                                />
+                            </div>
+                            <div className="col pad">
+                                <DropDown onChange={this.handleInputChange}></DropDown>
+                            </div>
+
+                            <div className="col pad center">
+                                <Button
+                                    onClick={this.handleFormSubmit}
+                                    className="input-lg"
+                                > Search </Button>
+                            </div>
                         </form>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col size="sm-3"></Col>
-                    <Col size="sm">
-                        {this.renderCard()}
-                    </Col>
-                    <Col size="sm-3"></Col>
-                </Row>
-            </Container>
+                    </div>
+                    {this.renderCard()}
+                </div>
+            </div>
+
         );
     }
 }
