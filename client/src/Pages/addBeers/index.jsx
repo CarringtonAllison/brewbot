@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from "../../components/Grid";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import API from "../../utils/API";
+import "./index.css"
 
 class AddBeers extends Component {
     state = {
@@ -42,8 +42,11 @@ class AddBeers extends Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="col d-flex justify-content-center align-items-center ">
+            <div className="row justify-content-center">
+                <div className=" login col-10">
+                    <div className="col">
+                        <h1 className="center formWork">Add Beer</h1>
+                    </div>
                     <form className="col">
                         <div className="col pad">
                             <Input
@@ -67,7 +70,7 @@ class AddBeers extends Component {
                                 name="description"
                                 value={this.state.description}
                                 onChange={this.handleInputChange}
-                                placeholder="Add Description"
+                                placeholder="Description"
                             />
                         </div>
 

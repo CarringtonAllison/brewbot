@@ -24,10 +24,10 @@ class Scrape extends Component {
             <div className="row padding justify-content-center">
                 {
                     this.state.results.data ? this.state.results.data.map((result) =>
-                        <div className="col-10 background">
+                        <div className="col-10 col-lg-12 background">
                             <div className="inline">
                                 <div className="align-items-center d-flex">
-                                    <img className="articleImg" src={result.image} alt="Article Photo" />
+                                    <img className="articleImg" src={result.image} alt="Article" />
                                 </div>
                                 <div className="card-body">
                                     <p className="card-text title">{result.title}</p>

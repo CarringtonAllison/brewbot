@@ -84,6 +84,7 @@ class SearchPage extends Component {
                         else {
                             // modal needs to go here!!!!!!!!!!!!!!!
                             console.log("This doest exist");
+                            window.location.replace("/addbeers")
                         }
                     }).catch(err => console.log(err));
             }
