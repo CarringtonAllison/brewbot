@@ -70,34 +70,34 @@ const MapWithASearchBox = compose(
     }),
     withScriptjs,
     withGoogleMap,
-    withState('places', 'updatePlaces', ''),
-    withHandlers(() => {
-        const refs = {
-            map: undefined,
-        }
+    // withState('places', 'updatePlaces', ''),
+    // withHandlers(() => {
+    //     const refs = {
+    //         map: undefined,
+    //     }
 
-        return {
-            onMapMounted: () => ref => {
-                refs.map = ref
-            },
-            fetchPlaces: ({ updatePlaces }) => {
-                let places;
-                const bounds = refs.map.getBounds();
-                const service = new google.maps.places.PlacesService(refs.map.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED);
-                const request = {
-                    bounds: bounds,
-                    radius: '500',
-                    type: ['bar']
-                };
-                service.nearbySearch(request, (results, status) => {
-                    if (status === google.maps.places.PlacesServiceStatus.OK) {
-                        console.log(results);
-                        updatePlaces(results);
-                    }
-                })
-            }
-        }
-    })
+    //     return {
+    //         onMapMounted: () => ref => {
+    //             refs.map = ref
+    //         },
+    //         fetchPlaces: ({ updatePlaces }) => {
+    //             let places;
+    //             const bounds = refs.map.getBounds();
+    //             const service = new google.maps.places.PlacesService(refs.map.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED);
+    //             const request = {
+    //                 bounds: bounds,
+    //                 radius: '500',
+    //                 type: ['bar']
+    //             };
+    //             service.nearbySearch(request, (results, status) => {
+    //                 if (status === google.maps.places.PlacesServiceStatus.OK) {
+    //                     console.log(results);
+    //                     updatePlaces(results);
+    //                 }
+    //             })
+    //         }
+    //     }
+    // })
 )(props => {
 
     const checkScreen = () => {
@@ -142,16 +142,16 @@ const MapWithASearchBox = compose(
                     }}
                 />
             </SearchBox>
-            {props.places && props.places.map((place, i) =>
+            {/* {props.places && props.places.map((place, i) =>
                 <Marker key={i} icon={iconUrl} position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }} />
-            )}
-            {/* {props.markers.map((marker, index) =>
+            )} */}
+            {props.markers.map((marker, index) =>
                 <Marker
                     key={index}
                     position={marker.position}
                     icon={iconUrl}
                 />
-            )} */}
+            )}
         </GoogleMap>
     )
 }

@@ -42,3 +42,48 @@ table {
         font-size: 30px; 
     }
 } 
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #favoriteBrews {
+        order: -1
+    }
+    
+    #favBeers {
+        font-size: 30px; 
+    }
+    
+    .centerUp {
+        text-align: center; 
+    }
+} 
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+    #favoriteBrews {
+        order: -1
+    }
+
+    #favBeers {
+        font-size: 30px; 
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+      #favoriteBrews {
+        order: 1
+    }
+
+    .centerUp {
+        text-align: left; 
+    }
+
+    #favBeers {
+        font-size: 30px; 
+    }
+}
+

@@ -63,16 +63,16 @@
     }
 
     .articleImg {
-        height: 100px;
-        width: 100px;
+        height: 120px;
+        width: 120px;
     }
 
     .title {
-        font-size: 14px; 
+        font-size: 16px; 
     }
 
     .author {
-        font-size: 8px; 
+        font-size: 12px; 
     }
 
     .background {
@@ -84,3 +84,113 @@
     
     
 } 
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+       .padding {
+        padding: 0px;
+    }
+
+    .articleImg {
+        height: 125px;
+        width: 125px;
+    }
+
+    .title {
+        font-size: 22px; 
+    }
+
+    .author {
+        font-size: 14px; 
+    }
+
+    .background {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-align: center;
+    }
+    
+} 
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {
+    .padding {
+        padding: 0px;
+    }
+
+    .articleImg {
+        height: 125px;
+        width: 125px;
+    }
+
+    .title {
+        font-size: 20px; 
+    }
+
+    .author {
+        font-size: 12px; 
+    }
+
+    .background {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-align: center;
+    }
+     
+} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {
+     .padding {
+        padding: 0px;
+    }
+
+    .articleImg {
+        height: 125px;
+        width: 125px;
+    }
+
+    .title {
+        font-size: 26px; 
+    }
+
+    .author {
+        font-size: 16px; 
+    }
+
+    .background {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-align: center;
+    }
+} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+/* @media only screen and (min-width: 1200px) {
+     .padding {
+        padding: 0px;
+    }
+
+    .articleImg {
+        height: 200px;
+        width: 200px;
+    }
+
+    .title {
+        font-size: 26px; 
+    }
+
+    .author {
+        font-size: 16px; 
+    }
+
+    .background {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-align: center; 
+
+    }
+} */
