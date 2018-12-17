@@ -5,7 +5,6 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import Profile from './components/Profile/Profile'
 import SearchPage from "./Pages/SearchPage"
-import Google from "./components/Google/SearchBox"
 import Scrape from "./Pages/articleScrape/index"
 import PrivateRoute from "./components/Authenticate";
 import { Provider } from 'react-redux';
