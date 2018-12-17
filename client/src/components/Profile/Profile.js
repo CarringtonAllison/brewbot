@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import jwt_decode from 'jwt-decode';
 import Google from "../Google/SearchBox"
+import FavCard from "../favoriteCard"
 import './index.css'
+import API from "../../utils/API"
+
 class Profile extends Component {
     constructor() {
         super()
@@ -9,7 +12,8 @@ class Profile extends Component {
             first_name: '',
             last_name: '',
             email: '',
-            errors: {}
+            errors: {},
+            favoriteBeers: []
         }
     }
 
@@ -20,7 +24,21 @@ class Profile extends Component {
             first_name: decoded.first_name,
             last_name: decoded.last_name,
             email: decoded.email
-        })
+        }, this.getFave)
+
+    }
+
+    getFave() {
+        console.log(this.state.email);
+        API.getFavBeers(this.state.email)
+            .then(data =>
+                this.setState({
+                    favoriteBeers: data.data[0].favorites
+                },
+                    () => console.log(this.state.favoriteBeers)
+                )
+            )
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -34,18 +52,18 @@ class Profile extends Component {
                         <Google />
                     </div>
                     <div className="col-5">
+
                         <div className="table">
                             <h1 id="favBeers" className="text-center">Favorite Brews</h1>
                             <table className="text-center">
                                 <tbody>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
+                                        <th>Beer Name</th>
+                                        <th>ABV</th>
                                     </tr>
-                                    <tr>
-                                        <td>{this.state.first_name}</td>
-                                        <td>{this.state.last_name}</td>
-                                    </tr>
+
+                                    {this.state.favoriteBeers ? this.state.favoriteBeers.map((item, i) => <FavCard key={i} {...item} />) : {}}
+
                                 </tbody>
                             </table>
                         </div>
