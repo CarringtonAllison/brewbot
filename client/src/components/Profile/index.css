@@ -14,10 +14,31 @@ table {
 
 .welcome {
     padding: 20px; 
-    font-family: 'Beer'
+    font-family: 'Beer'; 
+    color: #2d0000bf; 
 }
 
 #favBeers {
     font-family: 'Beer';
     padding: 15px; 
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .welcome {
+        font-size: 28px; 
+    }
+
+    .centerUp {
+        text-align: center; 
+    }
+
+    #favoriteBrews {
+        order: -1
+    }
+
+    #favBeers {
+        font-size: 30px; 
+    }
+} 

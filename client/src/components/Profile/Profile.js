@@ -27,13 +27,15 @@ class Profile extends Component {
         return (
             <div>
                 <div className="row">
-                    <h1 className="welcome">Welcome, {this.state.first_name}</h1>
+                    <div className="col centerUp">
+                        <h1 className="welcome">Welcome, {this.state.first_name}</h1>
+                    </div>
                 </div>
                 <div className="row">
-                    <div className="col-7">
+                    <div id="googleMap" className="col-12 col-lg-7">
                         <Google />
                     </div>
-                    <div className="col-5">
+                    <div id="favoriteBrews" className="col-12 col-lg-5">
                         <div className="table">
                             <h1 id="favBeers" className="text-center">Favorite Brews</h1>
                             <table className="text-center">
