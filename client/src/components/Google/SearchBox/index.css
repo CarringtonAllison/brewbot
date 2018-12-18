@@ -1,0 +1,13 @@
+#googleInfoBox > p {
+    font-size: 12px;
+    margin: 0px;
+}
+
+#googleInfoBox > h6 {
+    font-size: 14px;
+    font-family: 'Beer'
+}
+
+#test {
+    background-color: blue;
+}
