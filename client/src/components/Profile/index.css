@@ -23,6 +23,14 @@ table {
     padding: 15px; 
 }
 
+#googleMap {
+    transition: .25s ease
+}
+
+#googleMap:hover {
+    transform: scale(1.03)
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
