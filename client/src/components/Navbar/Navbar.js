@@ -48,7 +48,7 @@ class Landing extends Component {
         )
 
         return (
-            <div className="navbar-expand-lg d-flex justify-content-center">
+            <div className="navbar-expand-lg d-flex justify-content-center ">
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -61,7 +61,7 @@ class Landing extends Component {
                     </span>
                 </button>
 
-                <div className="collapse navbar-collapse justify-content-between" id="navbarsExample10">
+                <div className="collapse  navbar-collapse justify-content-between" id="navbarsExample10">
                     <h3 id="title">Brew Bot</h3>
                     {localStorage.usertoken ? userLink : loginRegLink}
                 </div>

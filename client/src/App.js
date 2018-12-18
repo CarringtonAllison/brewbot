@@ -10,6 +10,8 @@ import Scrape from "./Pages/articleScrape/index"
 import PrivateRoute from "./components/Authenticate";
 import { Provider } from 'react-redux';
 import store from './state'
+import Footer from './components/Footer';
+import './App.css'
 
 class App extends Component {
     render() {
@@ -30,6 +32,7 @@ class App extends Component {
                             <PrivateRoute exact path="/articles" component={Scrape} />
                             <PrivateRoute exact path="/addBeers" component={AddBeers} />
                         </div>
+                        <Footer />
                     </div>
                 </Router>
             </Provider>
