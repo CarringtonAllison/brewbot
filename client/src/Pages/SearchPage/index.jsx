@@ -58,7 +58,7 @@ class SearchPage extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
-        let search = titlecase(this.state.search.trim());
+        let search = titlecase(this.state.search);
         console.log(search)
 
         API.getBeerDB(search).then(res => {
