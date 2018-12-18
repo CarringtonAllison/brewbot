@@ -11,6 +11,7 @@ import {
 } from "react-google-maps";
 import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
 import iconUrl from './BeerIcon.png'
+import "./index.css"
 
 const MapWithASearchBox = compose(
     withProps({
@@ -95,6 +96,9 @@ const MapWithASearchBox = compose(
                 service.nearbySearch(request, (results, status) => {
                     if (status === google.maps.places.PlacesServiceStatus.OK) {
                         console.log(results);
+                        let choice = (results[0].photos[0].html_attributions[0]).slice(8).split(">");
+                        let link = choice[0]
+                        console.log(link)
                         updatePlaces(results);
                     }
                 })
@@ -152,12 +156,18 @@ const MapWithASearchBox = compose(
                 <Marker key={i} icon={iconUrl} position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }} />
             )} */}
 
-                 {props.places && props.places.map((place, i) =>
-                <Marker onClick={() => props.onToggleOpen(i)} icon={iconUrl}  key={i} position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}>
+            {props.places && props.places.map((place, i) =>
+                <Marker onClick={() => props.onToggleOpen(i)} icon={iconUrl} key={i} position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}>
                     {props.selectedPlace === i && <InfoWindow onCloseClick={props.onToggleOpen}>
-                        <div>
-                            {props.places[props.selectedPlace].name}
-                            {props.places[props.selectedPlace].vicinity}
+                        <div id="googleInfoBox" >
+                            <h6>{props.places[props.selectedPlace].name}</h6>
+                            <p>{props.places[props.selectedPlace].vicinity.split(", ")[0]}</p>
+                            <p>{props.places[props.selectedPlace].vicinity.split(", ")[1]}, {props.places[props.selectedPlace].plus_code.compound_code.split(", ")[1]}</p>
+                            <p>Rating: {props.places[props.selectedPlace].rating}</p>
+                            <p>Price Level: {props.places[props.selectedPlace].price_level}</p>
+                            {props.places[props.selectedPlace].opening_hours.open_now ? <p>Currently Open!</p> : <p>Currently Closed.</p>}
+                            {/* this link is pulling thru our websites and just adding it after the forward slash localhost:300/??????  */}
+                            <p><a href={props.places[props.selectedPlace].photos[0].html_attributions[0].slice(8).split(">")[0]} target="_blank">View on Google Maps</a></p>
                         </div>
                     </InfoWindow>}
                 </Marker>
