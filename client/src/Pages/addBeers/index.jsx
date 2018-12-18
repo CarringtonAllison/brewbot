@@ -36,7 +36,7 @@ class AddBeers extends Component {
                     name: "",
                     abv: "",
                     description: ""
-                }, ()=> alert("Beer Added"));
+                });
             })
             .catch(err => console.log(err));
     }
