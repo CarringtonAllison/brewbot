@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import API from "../../utils/API";
+import titleCase from "../../utils/titlecase";
 import "./index.css"
 
 class AddBeers extends Component {
@@ -23,7 +24,7 @@ class AddBeers extends Component {
         e.preventDefault();
 
         let obj = {
-            name: this.state.name,
+            name: titleCase(this.state.name),
             abv: this.state.abv,
             description: this.state.description
         }
@@ -35,7 +36,7 @@ class AddBeers extends Component {
                     name: "",
                     abv: "",
                     description: ""
-                })
+                });
             })
             .catch(err => console.log(err));
     }
