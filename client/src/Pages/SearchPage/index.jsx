@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Container, Row, Col } from "../../components/Grid";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -24,7 +25,8 @@ class SearchPage extends Component {
         last_name: '',
         email: '',
         errors: {},
-        fav: []
+        fav: [],
+        resultNotFound: ''
     }
 
     componentDidMount() {
@@ -60,6 +62,9 @@ class SearchPage extends Component {
         e.preventDefault();
         let search = titlecase(this.state.search);
         console.log(search)
+        this.setState({
+            resultNotFound: ''
+        })
 
         API.getBeerDB(search).then(res => {
             if (res.data[0]) {
@@ -84,7 +89,10 @@ class SearchPage extends Component {
                         else {
                             // modal needs to go here!!!!!!!!!!!!!!!
                             console.log("This doest exist");
-                            window.location.replace("/addbeers")
+                            this.setState({resultNotFound: <p>beer not found, add it to the database? <Link to="/addbeers">click here!</Link></p>})
+                            // window.location.replace("/addbeers")
+                            
+                        
                         }
                     }).catch(err => console.log(err));
             }
@@ -139,6 +147,9 @@ class SearchPage extends Component {
                 <div className="row">
                     <div className="col d-flex justify-content-center align-items-center ">
                         <form className="col">
+                        {/* beer not found div below carrington */}
+                        <div onChange={this.handleFormSubmit}
+                        >{this.state.resultNotFound}</div>
                             <div className="col pad">
                                 <Input
                                     name="search"

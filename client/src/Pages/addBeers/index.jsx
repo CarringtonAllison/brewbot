@@ -9,7 +9,8 @@ class AddBeers extends Component {
     state = {
         name: "",
         abv: "",
-        description: ""
+        description: "",
+        beerAddedMessage: ""
     }
 
     handleInputChange = e => {
@@ -22,6 +23,9 @@ class AddBeers extends Component {
 
     handleAdd = e => {
         e.preventDefault();
+        this.setState({
+            beerAddedMessage: "Beer Added You Legend, thank you!"
+        })
 
         let obj = {
             name: titleCase(this.state.name),
@@ -76,6 +80,8 @@ class AddBeers extends Component {
                         </div>
 
                         <div className="col pad center">
+                        {/* beer added message carrington */}
+                        <p>{this.state.beerAddedMessage}</p>
                             <Button
                                 onClick={this.handleAdd}
                                 className="input-lg"
