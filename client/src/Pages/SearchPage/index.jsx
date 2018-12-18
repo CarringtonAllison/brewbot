@@ -138,7 +138,7 @@ class SearchPage extends Component {
 
     render() {
         return (
-            <div className="background2">
+            <div className="background2 explore">
                 <div className="row text-center">
                     <div className="col">
                         <h1 className='font'>Explore</h1>
