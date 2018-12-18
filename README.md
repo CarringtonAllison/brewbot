@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 # Brewbot
 
 Brewbot is an app to help find your favorite beers and save them in the app.  
@@ -65,3 +67,4 @@ You can also search current articles and keep up to date with the beer brewing w
 >Joey Romo  
 >Tamir Natanov  
 >Anita McFarland
+>>>>>>> 59cfdbd929eb86709b4227729e17a8b0651b2b78
