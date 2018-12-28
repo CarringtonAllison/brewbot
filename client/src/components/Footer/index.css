@@ -27,11 +27,11 @@
     font-family: 'Beer'
 }
 
-/* 
-@media only screen and (max-width: 600px) {
-    .icon {
-        font-size: 25px; 
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        bottom: -20vh;
     }
 
-}  */
+} 
 
